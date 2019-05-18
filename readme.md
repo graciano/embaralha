@@ -10,6 +10,8 @@ Shuffles characters in given html element, then restores it's original text. *Em
 
 ![](embaralha.gif)
 
+*As you can observe in this GIF, I strongly recomend that you use a monospace font ;)*
+
 ## Instalation
 
 `npm i embaralha` or just grab the [index.js](index.js) file.
