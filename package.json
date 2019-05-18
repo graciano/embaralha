@@ -4,7 +4,7 @@
   "description": "Shuffles characters in given html element, then restores it's original text",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npx http-server"
   },
   "keywords": [
@@ -13,5 +13,9 @@
     "animation"
   ],
   "author": "Matheus Graciano <matheusgraciano@protonmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^24.8.0"
+  }
 }

@@ -1,11 +1,13 @@
 const MIN_DURATION = 30;
 const MAX_DURATION = 70;
 const CHARS = [...`10!@#$%*()£¢¬{[]}^<>.;:?/|\\-_=+§`];
-const random = max => parseInt(Math.random() * max);
-const randomRange = (a, b) => a + random(b - a);
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const randomElem = arr => arr[random((arr.length - 1))];
-const range = size => [...Array(size).keys()];
+import {
+  random,
+  randomRange,
+  sleep,
+  randomElem,
+  range,
+} from './src/utils.js';
 
 const changeCharFromPos = (text, char, pos) => text.substring(0, pos) + char
   + text.substring(pos+1, text.length);
