@@ -1,12 +1,14 @@
 import {
   random,
-  randomRange,
+  randomFromRange,
   sleep,
   randomElem,
   range,
 } from '../../src/utils.js';
 
 describe('range(n)', () => {
+  it('returns an array', () => expect(range(2).constructor).toBe(Array));
+  it('returns an array that is not empty', () => expect(range(1).length).toBeGreaterThan(0));
   test('first element is 0', () => expect(range(1000)[0]).toBe(0));
   test('length is n', () => expect(range(1000).length).toBe(1000));
   test('range(3) is [0, 1, 2]', () => expect(range(3)).toStrictEqual([0, 1, 2]));
@@ -19,6 +21,16 @@ describe('random(n)', () => {
     expect(random(1000)).toBeLessThan(1000);
   });
   it('is <= 0', () => expect(random(1000)).toBeGreaterThanOrEqual(0));
+});
+
+describe('randomFromRange(a, b)', () => {
+  it('returns a number', () => expect(typeof randomFromRange(1, 2)).toBe('number'));
+  it('returns a number >= a', () => {
+    expect(randomFromRange(1, 6)).toBeGreaterThanOrEqual(1);
+  });
+  it('returns a number <= a', () => {
+    expect(randomFromRange(1, 6)).toBeLessThanOrEqual(6);
+  });
 });
 
 // jest doesn't work with promises (yet)

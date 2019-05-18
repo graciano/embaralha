@@ -1,7 +1,7 @@
 const MIN_DURATION = 30;
 const MAX_DURATION = 70;
 import {
-  randomRange,
+  randomFromRange,
   sleep,
 } from './src/utils.js';
 
@@ -15,7 +15,7 @@ const embaralha = async (elem, time) => {
   let timer = 0;
   const originalText = elem.textContent;
   while (true) {
-    const tick = randomRange(MIN_DURATION, MAX_DURATION);
+    const tick = randomFromRange(MIN_DURATION, MAX_DURATION);
     timer += tick;
     if (timer > time) break;
     await sleep(tick);

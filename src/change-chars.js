@@ -1,5 +1,6 @@
 import {
   random,
+  randomFromRange,
   randomElem,
   range,
 } from './utils.js';
@@ -15,7 +16,7 @@ const changeChar = text => changeCharFromPos(
   random(text.length)
 );
 
-const changeRandomNumberOfChars = text => range(random(5))
+const changeRandomNumberOfChars = text => range(randomFromRange(1, 5))
   .reduce(acc => changeChar(acc), text);
 
 export {
