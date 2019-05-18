@@ -1,5 +1,4 @@
-const MIN_DURATION = 30;
-const MAX_DURATION = 70;
+import throttle from 'lodash.throttle';
 import {
   randomFromRange,
   sleep,
@@ -10,6 +9,9 @@ import {
   changeChar,
   changeRandomNumberOfChars,
 } from './src/change-chars.js';
+
+const MIN_DURATION = 30;
+const MAX_DURATION = 70;
 
 const embaralha = async (elem, time) => {
   let timer = 0;
@@ -24,4 +26,12 @@ const embaralha = async (elem, time) => {
   elem.textContent = originalText;
 };
 
-export { embaralha };
+const throttledEmbaralha = (elem, time) => {
+  const throttleTime = time + MAX_DURATION;
+  return throttle(() => embaralha(elem, time), throttleTime);
+};
+
+export {
+  embaralha,
+  throttledEmbaralha,
+};

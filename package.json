@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npx http-server"
+    "start": "webpack example/example.js -o example/bundle.js --mode=development && npx http-server example/"
   },
   "keywords": [
     "shuffle",
@@ -16,6 +16,11 @@
   "license": "MIT",
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
   }
 }
