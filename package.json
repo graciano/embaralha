@@ -1,0 +1,17 @@
+{
+  "name": "embaralha",
+  "version": "0.1.0",
+  "description": "Shuffles characters in given html element, then restores it's original text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server example"
+  },
+  "keywords": [
+    "shuffle",
+    "effect",
+    "animation"
+  ],
+  "author": "Matheus Graciano <matheusgraciano@protonmail.com>",
+  "license": "MIT"
+}
