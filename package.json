@@ -1,6 +1,6 @@
 {
   "name": "embaralha",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shuffles characters in given html element, then restores it's original text",
   "main": "index.js",
   "scripts": {
