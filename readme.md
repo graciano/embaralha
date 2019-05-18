@@ -4,6 +4,7 @@ embaralha
 ![](https://img.shields.io/npm/v/embaralha.svg)
 ![](https://img.shields.io/bundlephobia/min/embaralha.svg)
 ![](https://img.shields.io/npm/l/embaralha.svg)
+![](https://img.shields.io/circleci/project/github/graciano/embaralha/master.svg)
 
 Shuffles characters in given html element, then restores it's original text. *Embaralha* means "to shuffle" in portuguese.
 
