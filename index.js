@@ -1,25 +1,15 @@
 const MIN_DURATION = 30;
 const MAX_DURATION = 70;
-const CHARS = [...`10!@#$%*()£¢¬{[]}^<>.;:?/|\\-_=+§`];
 import {
-  random,
   randomRange,
   sleep,
-  randomElem,
-  range,
 } from './src/utils.js';
 
-const changeCharFromPos = (text, char, pos) => text.substring(0, pos) + char
-  + text.substring(pos+1, text.length);
-
-const changeChar = text => changeCharFromPos(
-  text,
-  randomElem(CHARS),
-  random(text.length)
-);
-
-const changeRandomNumberOfChars = text => range(random(5))
-  .reduce(acc => changeChar(acc), text);
+import {
+  changeCharFromPos,
+  changeChar,
+  changeRandomNumberOfChars,
+} from './src/change-chars.js';
 
 const embaralha = async (elem, time) => {
   let timer = 0;
