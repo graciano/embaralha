@@ -5,12 +5,13 @@ import {
 
 import { sleep } from '../src/utils.js';
 
+const time = 500;
+const originalText = 'example';
+const elem = {
+  textContent: originalText,
+};
+
 describe('embaralha', () => {
-  const time = 500;
-  const originalText = 'example';
-  const elem = {
-    textContent: originalText,
-  };
   it('awaits `time` milisseconds', async () => {
     const callback = jest.fn();
     embaralha(elem, time).then(callback);
@@ -39,3 +40,9 @@ describe('embaralha', () => {
     expect(callbackError).not.toBeCalled();
   });
 });
+
+describe('throttledEmbaralha', () => {
+  it('returns a function', () => {
+    expect(typeof throttledEmbaralha(elem, time)).toBe('function');
+  });
+})
