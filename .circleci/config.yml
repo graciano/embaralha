@@ -1,0 +1,9 @@
+version: 0.1.1
+jobs:
+  build:
+    docker: # use the docker executor type; machine and macos executors are also supported
+      - image: circleci/node8.10.0 # the primary container, where your job's commands are run
+    steps:
+      - checkout # check out the code in the project directory
+      - npm i # check out the code in the project directory
+      - run: npm test # run the `echo` command
