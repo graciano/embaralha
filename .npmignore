@@ -1,0 +1,7 @@
+coverage/
+example/
+tests/
+.circleci
+.babelrc
+*.gif
+jest.config.js
