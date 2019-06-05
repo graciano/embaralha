@@ -11,6 +11,7 @@ describe('CHARS', () => {
 });
 
 const str1 = 'banana';
+const paragraph = 'this is a text with\n some \t kinds\r of white spaces';
 
 describe('changeCharFromPos(text, char, pos)', () => {
   it('returns a string of the same size', () => {
@@ -24,6 +25,14 @@ describe('changeCharFromPos(text, char, pos)', () => {
 
   it('makes the correct result', () => {
     expect(changeCharFromPos(str1, '-', 2)).toBe('ba-ana');
+  });
+
+  it('does\'nt change chars on white spaces', () => {
+    const spaceIndexes = [...paragraph]
+      .map((char, i) => char.match(/\s/) && i).filter(_ => _);
+    for (let i of spaceIndexes) {
+      expect(changeCharFromPos(paragraph, '-', i)).toBe(paragraph);
+    }
   });
 });
 

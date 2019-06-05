@@ -7,8 +7,11 @@ import {
 
 const CHARS = [...`10!@#$%*()£¢¬{[]}^<>.;:?/|\\-_=+§`];
 
-const changeCharFromPos = (text, char, pos) => text.substring(0, pos) + char
-  + text.substring(pos+1, text.length);
+const posIsWhiteSpace = (text, pos) => [...text][pos].match(/\s/);
+
+const changeCharFromPos = (text, char, pos) => (posIsWhiteSpace(text, pos)
+  ? text
+  :text.substring(0, pos) + char + text.substring(pos+1, text.length));
 
 const changeChar = text => changeCharFromPos(
   text,
