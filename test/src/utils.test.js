@@ -4,7 +4,15 @@ import {
   sleep,
   randomElem,
   range,
+  MIN_DURATION,
+  MAX_DURATION,
 } from '../../src/utils.js';
+
+const pureSleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+describe('constants', () => {
+  expect(MIN_DURATION).toBeLessThan(MAX_DURATION);
+});
 
 describe('range(n)', () => {
   it('returns an array', () => expect(range(2).constructor).toBe(Array));
@@ -36,7 +44,7 @@ describe('randomFromRange(a, b)', () => {
 // jest doesn't work with promises (yet)
 // https://stackoverflow.com/questions/51126786/jest-fake-timers-with-promises
 describe('sleep(time)', () => {
-  const time = 50;
+  const time = MAX_DURATION - MIN_DURATION;
   it('awaits `time` milisseconds', async () => {
     const callback = jest.fn();
     sleep(time).then(callback);
@@ -52,6 +60,14 @@ describe('sleep(time)', () => {
     sleep(time).then(jest.fn()).catch(callbackError);
     await sleep(time);
     expect(callbackError).not.toBeCalled();
+  });
+
+  it('runs immediately if time is less than MIN_DURATION', async () => {
+    const cb = jest.fn();
+    const time = MIN_DURATION - 1;
+    pureSleep(time).then(cb);
+    await sleep(time);
+    expect(cb).not.toBeCalled();
   });
 });
 
