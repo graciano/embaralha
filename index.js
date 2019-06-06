@@ -1,19 +1,17 @@
 import {
-  sleep,
-  tick,
-} from './src/utils.js';
-
-import {
   changeRandomNumberOfChars,
 } from './src/change-chars.js';
 
+import {
+  walkSteps,
+  steps,
+} from './src/steps.js';
+
 const embaralha = async (elem, time) => {
   const originalText = elem.textContent;
-  for (let passed = 0; passed < time; passed += tick(passed, time)) {
-    elem.textContent = changeRandomNumberOfChars(elem.textContent);
-    await sleep(tick(passed, time));
-  }
-  elem.textContent = originalText;
+  await walkSteps(steps(time),
+    () => elem.textContent = changeRandomNumberOfChars(elem.textContent));
+  elem.textContent = originalText
   return originalText;
 };
 
