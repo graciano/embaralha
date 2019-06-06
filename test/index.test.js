@@ -1,6 +1,5 @@
 import {
   embaralha,
-  throttledEmbaralha,
 } from '../index.js';
 
 import { sleep } from '../src/utils.js';
@@ -26,6 +25,10 @@ describe('embaralha', () => {
     expect(elem.textContent).toBe(originalText);
   });
 
+  it('returns the original text', async() => {
+    expect(await embaralha(elem, time)).toBe(originalText);
+  });
+
   it('changes text in the middle of the process', async() => {
     embaralha(elem, time);
     await sleep(time / 2);
@@ -40,9 +43,3 @@ describe('embaralha', () => {
     expect(callbackError).not.toBeCalled();
   });
 });
-
-describe('throttledEmbaralha', () => {
-  it('returns a function', () => {
-    expect(typeof throttledEmbaralha(elem, time)).toBe('function');
-  });
-})

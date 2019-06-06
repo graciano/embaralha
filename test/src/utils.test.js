@@ -4,6 +4,7 @@ import {
   sleep,
   randomElem,
   range,
+  tick,
   MIN_DURATION,
   MAX_DURATION,
 } from '../../src/utils.js';
@@ -80,4 +81,21 @@ describe('randomElem', () => {
   })
   it('doesn\'t return falsey elements (unless there is such an element in the array)',
     () => expect(randomElem(arr2)).not.toBeFalsey);
+});
+
+describe('tick', () => {
+  const limit = 3 * MAX_DURATION;
+  it('returns a number', () => {
+    expect(typeof tick(0, limit)).toBe('number');
+  });
+  it('is <= MAX_DURATION', () => {
+    expect(tick(0, limit)).toBeLessThanOrEqual(MAX_DURATION);
+  });
+  it('is >= MIN_DURATION when not close to limit', () => {
+    expect(tick(0, limit)).toBeGreaterThanOrEqual(MIN_DURATION);
+  });
+  it('is the difference of limit and passed when close to limit', () => {
+    const diff = MIN_DURATION - 1;
+    expect(tick(limit - diff, limit)).toBe(diff);
+  });
 });

@@ -1,4 +1,10 @@
-import { throttledEmbaralha } from '../index.js';
+import throttle from 'lodash.throttle';
+import { embaralha } from '../index.js';
+
+const throttledEmbaralha = (elem, time) => {
+  const throttleTime = time + 70;
+  return throttle(() => embaralha(elem, time), throttleTime);
+};
 
 const main = () => {
   const body = document.querySelector('body');

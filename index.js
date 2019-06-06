@@ -1,37 +1,22 @@
-import throttle from 'lodash.throttle';
 import {
-  randomFromRange,
   sleep,
+  tick,
 } from './src/utils.js';
 
 import {
-  changeCharFromPos,
-  changeChar,
   changeRandomNumberOfChars,
 } from './src/change-chars.js';
 
-const MIN_DURATION = 30;
-const MAX_DURATION = 70;
-
 const embaralha = async (elem, time) => {
-  let timer = 0;
   const originalText = elem.textContent;
-  while (true) {
-    const tick = randomFromRange(MIN_DURATION, MAX_DURATION);
-    timer += tick;
-    if (timer > time) break;
-    await sleep(tick);
+  for (let passed = 0; passed < time; passed += tick(passed, time)) {
     elem.textContent = changeRandomNumberOfChars(elem.textContent);
+    await sleep(tick(passed, time));
   }
   elem.textContent = originalText;
-};
-
-const throttledEmbaralha = (elem, time) => {
-  const throttleTime = time + MAX_DURATION;
-  return throttle(() => embaralha(elem, time), throttleTime);
+  return originalText;
 };
 
 export {
   embaralha,
-  throttledEmbaralha,
 };
