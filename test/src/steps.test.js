@@ -45,8 +45,9 @@ describe('walkSteps', () => {
   it('awaits time passed for steps', async () => {
     const cb = jest.fn();
     walkSteps(steps(time), jest.fn()).then(cb);
+    await pureSleep(time / 2);
     expect(cb).not.toBeCalled();
-    await pureSleep(time);
+    await pureSleep(time / 2);
     expect(cb).toBeCalled();
   })
 

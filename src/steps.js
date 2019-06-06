@@ -12,12 +12,20 @@ const stepsRecursive = (time, steps) => {
 
 const steps = time => stepsRecursive(time, []);
 
-const walkSteps = async (steps, iteration) => steps
-  .reduce(async (walked, step) => {
-    await walked;
+const walkSteps = (steps, iteration) => {
+  const firstStep = {
+    walked: Promise.resolve(),
+    debt: 0,
+  };
+  return steps.reduce(async (walked, step) => {
+    const debt = await walked;
+    const start = performance.now();
     iteration();
-    return sleep(step);
-  }, Promise.resolve());
+    const nextDebt = performance.now() - start;
+    await sleep(step - debt);
+    return Promise.resolve(nextDebt);
+  }, firstStep);
+};
 
 export {
   timePassed,

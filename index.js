@@ -8,7 +8,7 @@ import {
 } from './src/steps.js';
 
 const embaralha = async (elem, time) => {
-  const originalText = elem.textContent;
+  const originalText = elem.textContent.slice(0);
   await walkSteps(steps(time),
     () => elem.textContent = changeRandomNumberOfChars(elem.textContent));
   elem.textContent = originalText
