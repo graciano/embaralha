@@ -30,12 +30,14 @@ elem.addEventListener('mouseover', async () => embaralha(elem, 1000));
 
 Any contribution is welcome, just make sure the tests (`npm test`) are passing, but don't worry about the webdriver tests (the ones in the `test/specs` dir). And if you'd be so kind, write your tests for your additions.
 
+Also, you can run it locally with `npm start` and then going to http://localhost:8080
+
 ### To Do
- - don't change char when white space ("respect the words")
+ - ~don't change char when white space ("respect the words")~
  - bug fix when mouseover multiple times causing loss of orinal text
  - use webdriver properly
  - use eslint
- - lower the dist file size
+ - ~lower the dist file size~
  - add to [microjs](http://microjs.com/)
  
 ## License
